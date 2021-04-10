@@ -1,0 +1,158 @@
+<!-- partial:index.partial.html --><!-- Hamburger --><html><head><style type="text/css" id="embedded_css">#editor_section button, hr, input { overflow-x: visible; overflow-y: visible; }#editor_section audio, canvas, progress, video { display: inline-block; }#editor_section progress, sub, sup { vertical-align: baseline; }#editor_section html { font-family: sans-serif; line-height: 1.15; }#editor_section { margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; }#editor_section menu, article, aside, details, footer, header, nav, section { display: block; }#editor_section h1 { font-size: 2em; margin-top: 0.67em; margin-right: 0; margin-bottom: 0.67em; margin-left: 0; }#editor_section figcaption, figure, main { display: block; }#editor_section figure { margin-top: 1em; margin-right: 40px; margin-bottom: 1em; margin-left: 40px; }#editor_section hr { box-sizing: content-box; height: 0px; }#editor_section code, kbd, pre, samp { font-family: monospace, monospace; font-size: 1em; }#editor_section a { background-color: transparent; text-decoration-skip: objects; }#editor_section a:active, a:hover { outline-width: 0; }#editor_section abbr[title] { border-bottom-color: initial; border-bottom-style: none; border-bottom-width: initial; text-decoration-line: underline; text-decoration-style: dotted; }#editor_section b, strong { font-weight: bolder; }#editor_section dfn { font-style: italic; }#editor_section mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }#editor_section small { font-size: 80%; }#editor_section sub, sup { font-size: 75%; line-height: 0; position: relative; }#editor_section sub { bottom: -0.25em; }#editor_section sup { top: -0.5em; }#editor_section audio:not([controls]) { display: none; height: 0px; }#editor_section img { border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; }#editor_section svg:not(:root) { overflow-x: hidden; overflow-y: hidden; }#editor_section button, input, optgroup, select, textarea { font-family: sans-serif; font-size: 100%; line-height: 1.15; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; }#editor_section button, input {  }#editor_section button, select { text-transform: none; }#editor_section [type="submit"], [type="reset"], button, html [type="button"] {  }#editor_section [type="button"]:focus-inner, [type="reset"]:focus-inner, [type="submit"]:focus-inner, button:focus-inner { border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; }#editor_section [type="button"]:focusring, [type="reset"]:focusring, [type="submit"]:focusring, button:focusring { outline-color: buttontext; outline-style: dotted; outline-width: 1px; }#editor_section fieldset { border-top-color: silver; border-top-style: solid; border-top-width: 1px; border-right-color: silver; border-right-style: solid; border-right-width: 1px; border-bottom-color: silver; border-bottom-style: solid; border-bottom-width: 1px; border-left-color: silver; border-left-style: solid; border-left-width: 1px; margin-top: 0; margin-right: 2px; margin-bottom: 0; margin-left: 2px; padding-top: 0.35em; padding-right: 0.625em; padding-bottom: 0.75em; padding-left: 0.625em; }#editor_section legend { box-sizing: border-box; color: inherit; display: table; max-width: 100%; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; white-space: normal; }#editor_section progress {  }#editor_section textarea { overflow-x: auto; overflow-y: auto; }#editor_section [type="checkbox"], [type="radio"] { box-sizing: border-box; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; }#editor_section [type="number"]:inner-spin-button, [type="number"]:outer-spin-button { height: auto; }#editor_section [type="search"] {  }#editor_section [type="search"]:search-cancel-button, [type="search"]:search-decoration {  }#editor_section :file-upload-button { font-style: inherit; font-variant-alternates: inherit; font-variant-caps: inherit; font-variant-east-asian: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-position: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; }#editor_section summary { display: list-item; }#editor_section [hidden], template { display: none; }</style></head><body><style type="text/css" id="embedded_css"></style><div class="hamburger">
+  <div class="hamburger__container">
+    <span class="hamburger__top"></span>
+    <span class="hamburger__middle"></span>
+    <span class="hamburger__bottom"></span>
+  </div>
+</div>
+
+<!-- Menu -->
+<div class="menu">
+  <div class="menu__container bg-white">
+    <nav class="menu__nav">
+      <p><br></p></nav><div class="menu__sidebar"><div class="menu__flip">
+      </div>
+    </div>
+  </div>
+  <div class="menu__img bg-black">
+    <figure class="absolute-bg" style="background-image: url(&quot;https://source.unsplash.com/t2Sai-AqIpI/900x1600&quot;);"></figure>
+  </div>
+</div>
+
+<!-- Demo -->
+    <div class="movie">
+        <h2><u>Movie Recommendation System</u></h2>
+        <form action="{{ url_for('main') }}" method="POST">
+            <input type="text" id="movie_name" name="movie_name" placeholder="Enter a full movie name" required="">
+            <input type="submit" id="submission_button" value="Submit"></form>
+  </div>
+<!-- partial -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+<script>
+// Menu
+const Menu = (() => {
+  let s;
+
+  return {
+    settings() {
+      return {
+        body: $('body'),
+        hamburger: $('.hamburger'),
+        open: 'js-menu-open',
+        visible: 'js-menu-visible',
+        overflow: 'js-overflow',
+        width: $(window).width(),
+        prevWidth: $(window).width() };
+
+    },
+
+    init() {
+      s = this.settings();
+      this.bindEvents();
+    },
+
+    bindEvents() {
+      let menuContainerWidth;
+
+      if (s.width < 864) {
+        menuContainerWidth = 100;
+      } else if (s.width < 1456) {
+        menuContainerWidth = 50;
+      } else {
+        menuContainerWidth = 45;
+      }
+
+      $(window).on('resize', () => {
+        s.width = $(window).width();
+
+        if (s.width < 864) {
+          menuContainerWidth = 100;
+        } else if (s.width < 1456) {
+          menuContainerWidth = 50;
+        } else {
+          menuContainerWidth = 45;
+        }
+      });
+
+      s.hamburger.on('click', () => {
+        Menu.toggleMenu(menuContainerWidth);
+      });
+
+      s.body.on('keyup', e => {
+        if (s.body.hasClass(s.open) && e.which === 27) {
+          Menu.toggleMenu(menuContainerWidth);
+        }
+      });
+    },
+
+    toggleMenu(width) {
+      s.hamburger.toggleClass('js-hamburger');
+      s.body.toggleClass(s.open);
+      s.body.toggleClass(s.overflow);
+
+      // Opening transition
+      if (s.body.hasClass(s.open)) {
+        s.prevWidth = width;
+
+        anime.timeline({
+          easing: 'easeOutQuart',
+          duration: 600,
+          begin() {
+            $('.menu__img').css('left', `${width}%`);
+            s.body.addClass(s.visible);
+          } }).
+
+        add({
+          targets: '.menu__container',
+          width: [0, `${width}%`] }).
+
+        add({
+          targets: '.menu__img',
+          width: [0, `${100 - width}%`] },
+        0);
+      }
+
+      // Closing transition
+      if (!s.body.hasClass(s.open)) {
+        anime.timeline({
+          easing: 'easeInQuart',
+          duration: 600,
+          delay: 200,
+          complete() {
+            s.body.removeClass(s.visible);
+          } }).
+
+        add({
+          targets: '.menu__container',
+          width: [`${s.prevWidth}%`, 0] }).
+
+        add({
+          targets: '.menu__img',
+          width: [`${100 - s.prevWidth}%`, 0] },
+        0);
+      }
+    } };
+
+})();
+
+// Inits
+$(() => {
+  // Spanize
+  const span = $('.js-span');
+  let $ele, words;
+
+  for (let i = 0; i < span.length; i++) {
+    $ele = $(span).eq(i);
+    words = $ele.html();
+
+    $ele.html(words.replace(/([A-z0-9'@+-<>.,'"“”‘’?!*&/]+)/g, '<span>$&</span>'));
+  }
+
+  Menu.init();
+});    
+</script>
+
+
+
+</body></html>
